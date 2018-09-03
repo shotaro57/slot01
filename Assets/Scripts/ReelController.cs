@@ -96,3 +96,6 @@ public class ReelController : MonoBehaviour {
 
     }
 }
+/*
+練習
+ */
