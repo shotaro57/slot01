@@ -8,10 +8,11 @@ public class Main : MonoBehaviour {
 	public static bool isReelCenterStop = false;
 	public static bool isReelLeftStop = false;
 	public static bool isReelRightStop = false;
+	public static string role = "はずれ";
 
 	// Use this for initialization
 	void Start () {
-		
+				
 	}
 	
 	// Update is called once per frame
