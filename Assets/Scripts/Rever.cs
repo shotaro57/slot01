@@ -18,15 +18,15 @@ public class Rever : MonoBehaviour {
 				Main.playFlag = true;
 			}
 		}
-		
+
 		if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
 		{
 			transform.rotation = Quaternion.Euler(-45, 0, 0);
 		}
-		else if(Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.UpArrow))
+		
+		if(Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.UpArrow))
 		{
 			transform.rotation = Quaternion.Euler(0, 0, 0);
-		}
-		
+		}	
 	}
 }
