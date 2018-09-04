@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -113,6 +113,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &227698800 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: c060d13636e827e459e5ab01fd85cd0c, type: 3}
+  m_PrefabInternal: {fileID: 629630985}
+--- !u!114 &227698801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 227698800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1838953d7f88fe248bf7bad7c57631ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reelSpeed: 2
 --- !u!1001 &339322363
 Prefab:
   m_ObjectHideFlags: 0
@@ -151,6 +167,10 @@ Prefab:
     - target: {fileID: 400000, guid: 004b36599c21f354db80d3c0d4123d9d, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 004b36599c21f354db80d3c0d4123d9d, type: 3}
+      propertyPath: m_Name
+      value: reverObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 004b36599c21f354db80d3c0d4123d9d, type: 3}
@@ -387,6 +407,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &805694577 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 43c73fd65e56ab54a88b3fd93879aa8a, type: 3}
+  m_PrefabInternal: {fileID: 2027862899}
+--- !u!114 &805694578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805694577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ca3eb051bc95542b2e52a7868f0579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &941011796
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +430,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 941011797}
+  - component: {fileID: 941011798}
   m_Layer: 0
   m_Name: rever
   m_TagString: Untagged
@@ -416,42 +452,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1251083352
+--- !u!114 &941011798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 941011796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7c142c36200b1498ef679aa4303a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1338849282
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1251083354}
-  - component: {fileID: 1251083353}
+  - component: {fileID: 1338849284}
+  - component: {fileID: 1338849283}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1251083353
+--- !u!114 &1338849283
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1251083352}
+  m_GameObject: {fileID: 1338849282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 550d10524b20c57449a0bf7ad7648617, type: 3}
+  m_Script: {fileID: 11500000, guid: f6bf4811c2055ef468217737379779f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reelSpeed: 1
---- !u!4 &1251083354
+--- !u!4 &1338849284
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1251083352}
+  m_GameObject: {fileID: 1338849282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.007092476, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
