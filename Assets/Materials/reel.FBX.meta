@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c060d13636e827e459e5ab01fd85cd0c
+guid: 3e716e27d128e5345b718524352f899c
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -11,7 +11,9 @@ ModelImporter:
     400002: reelCenter
     400004: reelLeft
     400006: reelRight
-    2100000: No Name
+    2100000: 01 - Default
+    2100002: '01 - Default #1'
+    2100004: '01 - Default #2'
     2300000: reelCenter
     2300002: reelLeft
     2300004: reelRight
@@ -21,6 +23,8 @@ ModelImporter:
     4300000: reelCenter
     4300002: reelLeft
     4300004: reelRight
+    7400000: Take 001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -96,7 +100,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
