@@ -1,14 +1,56 @@
 fileFormatVersion: 2
-guid: 004b36599c21f354db80d3c0d4123d9d
+guid: 268a9deab18e04e43aef19bc046ccaf6
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: buttonCenter
+    100002: buttonLeft
+    100004: buttonRight
+    100006: cabinet
+    100008: //RootNode
+    100010: lever
+    100012: reelCenter
+    100014: reelLeft
+    100016: reelRight
+    400000: buttonCenter
+    400002: buttonLeft
+    400004: buttonRight
+    400006: cabinet
+    400008: //RootNode
+    400010: lever
+    400012: reelCenter
+    400014: reelLeft
+    400016: reelRight
     2100000: No Name
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: lever
+    2100002: 01 - Default
+    2100004: '01 - Default #1'
+    2100006: '01 - Default #2'
+    2300000: buttonCenter
+    2300002: buttonLeft
+    2300004: buttonRight
+    2300006: cabinet
+    2300008: lever
+    2300010: reelCenter
+    2300012: reelLeft
+    2300014: reelRight
+    3300000: buttonCenter
+    3300002: buttonLeft
+    3300004: buttonRight
+    3300006: cabinet
+    3300008: lever
+    3300010: reelCenter
+    3300012: reelLeft
+    3300014: reelRight
+    4300000: cabinet
+    4300002: reelCenter
+    4300004: reelLeft
+    4300006: reelRight
+    4300008: buttonCenter
+    4300010: buttonLeft
+    4300012: buttonRight
+    4300014: lever
+    7400000: Take 001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -84,7 +126,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
