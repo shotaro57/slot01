@@ -17,6 +17,8 @@ public class DrawRole : MonoBehaviour {
 		{
 			if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
 			{
+				Main.playFlag = true;
+				
 				if(Main.bigFlag){
 					Main.role = JudgeRole(9);
 					Debug.Log(Main.role);

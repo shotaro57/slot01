@@ -11,6 +11,7 @@ public class Rever : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		/*/
 		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			if(!Main.playFlag)
@@ -18,6 +19,7 @@ public class Rever : MonoBehaviour {
 				Main.playFlag = true;
 			}
 		}
+		*/
 
 		if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
 		{
