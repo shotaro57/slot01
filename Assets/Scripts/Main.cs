@@ -10,7 +10,9 @@ public class Main : MonoBehaviour {
 	public static bool isReelRightStop = false;
 	public static string role = "はずれ";
 	public static int settei;
-
+	public static bool bigFlag = false;
+	public static bool regFlag = false;
+	public static bool jyunbiFlag = false;
 	// Use this for initialization
 	void Start () {
         settei = Random.Range(1, 7);
