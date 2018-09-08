@@ -13,9 +13,11 @@ public class Main : MonoBehaviour {
 	public static bool bigFlag = false;
 	public static bool regFlag = false;
 	public static bool jyunbiFlag = false;
+	public static bool Lump = false;
 	// Use this for initialization
 	void Start () {
         settei = Random.Range(1, 7);
+		Debug.Log(settei);
     }
 	
 	// Update is called once per frame
