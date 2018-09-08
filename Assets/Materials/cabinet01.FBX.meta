@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 268a9deab18e04e43aef19bc046ccaf6
+guid: d7532cd257301f74ab18782cc3511314
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -21,10 +21,11 @@ ModelImporter:
     400012: reelCenter
     400014: reelLeft
     400016: reelRight
-    2100000: No Name
+    2100000: '01 - Default #3'
     2100002: 01 - Default
     2100004: '01 - Default #1'
     2100006: '01 - Default #2'
+    2100008: No Name
     2300000: buttonCenter
     2300002: buttonLeft
     2300004: buttonRight
