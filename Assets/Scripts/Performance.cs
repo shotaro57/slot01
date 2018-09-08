@@ -16,19 +16,18 @@ public class Performance : MonoBehaviour {
 			if(!Main.Lump){
 				if(pekakanri == 0){
 					peka = Random.Range(0,4);
-					pekakanri=1;
+					pekakanri = 1;
 				}
 				if(peka == 0){
-							Main.Lump = true;
-							Debug.Log("先点灯中");
-							pekakanri=0;
+					Main.Lump = true;
+					Debug.Log("先点灯中");
+					pekakanri = 0;
 				}else{
                     if(Main.playFlag == false){
-							Main.Lump = true;
-							Debug.Log("後点灯中");
-							pekakanri=0;
-					}
-					
+						Main.Lump = true;
+						Debug.Log("後点灯中");
+						pekakanri = 0;
+					}				
 				}
 			}	
 		}

@@ -16,7 +16,8 @@ public class Main : MonoBehaviour {
 	public static bool Lump = false;
 	// Use this for initialization
 	void Start () {
-        settei = Random.Range(1, 7);
+        //settei = Random.Range(1, 7);
+		settei = 10;
 		Debug.Log(settei);
     }
 	

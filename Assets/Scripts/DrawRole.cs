@@ -12,34 +12,34 @@ public class DrawRole : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		
-			if(!Main.playFlag)
+	void Update () {	
+		if(!Main.playFlag)
+		{
+			if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
 			{
-				if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
-				{
-					if(Main.bigFlag){
-						Main.role = JudgeRole(9);
-						Debug.Log(Main.role);
-					}
-					else if(Main.regFlag){
-						Main.role = JudgeRole(8);
-						Debug.Log(Main.role);
-					}
-					else if(Main.jyunbiFlag){
-						Main.role = JudgeRole(7);
-						Debug.Log(Main.role);
-					}
-					else{
-						Main.role = JudgeRole(Main.settei);
-						Debug.Log(Main.role);
-						if((Main.role == "単b" || Main.role == "重b" || Main.role == "単r" || Main.role == "重r")){
-							Main.jyunbiFlag = true;
-						}
-					}
-					
+				if(Main.bigFlag){
+					Main.role = JudgeRole(9);
+					Debug.Log(Main.role);
 				}
+				else if(Main.regFlag){
+					Main.role = JudgeRole(8);
+					Debug.Log(Main.role);
+				}
+				else if(Main.jyunbiFlag){
+					Main.role = JudgeRole(7);
+					Debug.Log(Main.role);
+				}
+				else{
+					Main.role = JudgeRole(Main.settei);
+					Debug.Log(Main.role);
+					if((Main.role == "単b" || Main.role == "重b" || 
+						Main.role == "単r" || Main.role == "重r"))	{
+						Main.jyunbiFlag = true;
+					}
+				}
+				
 			}
+		}
 	}
 	
 	/*
@@ -216,6 +216,10 @@ public class DrawRole : MonoBehaviour {
 				return "はずれ";//はずれ
 			}
 
+		}else if(settei == 8){
+			//REGボーナス消化中
+			return "ブドウ";//ブドウ
+		
 		}else if(settei == 9){
 			//BIGボーナス消化中
 			if((0 <= Value) && (Value < 1840)){
@@ -228,9 +232,29 @@ public class DrawRole : MonoBehaviour {
 				return "ブドウ";//ブドウ
 			}
 
-		}else if(settei == 8){
-			//REGボーナス消化中
-			return "ブドウ";//ブドウ
+		}else if(settei == 10){
+			//デバッグ用テーブル
+			if((0 <= Value) && (Value < 6553)){
+				return "リプレイ";//リプレイ
+			}else if((6553 <= Value) && (Value < 13107)){
+				return "ブドウ";//ブドウ
+			}else if((13107 <= Value) && (Value < 19660)){
+				return "チェリー";//チェリー
+			}else if((19660 <= Value) && (Value < 26214)){
+				return "ピエロ";//ピエロ
+			}else if((26214 <= Value) && (Value < 32768)){
+				return "ベル";//ベル
+			}else if((32768 <= Value) && (Value < 39321)){
+				return "単b";//単B
+			}else if((39321 <= Value) && (Value < 45875)){
+				return "重b";//重B
+			}else if((45875 <= Value) && (Value < 52428)){
+				return "単r";//単R
+			}else if((52428 <= Value) && (Value < 58982)){
+				return "重r";//重R
+			}else{
+				return "はずれ";//はずれ
+			}
 		
 		}else{
 			Debug.Log("設定エラー！");
