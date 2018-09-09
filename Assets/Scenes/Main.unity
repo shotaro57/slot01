@@ -122,13 +122,14 @@ GameObject:
   m_Component:
   - component: {fileID: 162456964}
   - component: {fileID: 162456963}
+  - component: {fileID: 162456965}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: PointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &162456963
 Light:
   m_ObjectHideFlags: 0
@@ -138,9 +139,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.037245974, b: 0, a: 1}
-  m_Intensity: 1
-  m_Range: 3
+  m_Color: {r: 1, g: 0, b: 0.6072798, a: 1}
+  m_Intensity: 2.36
+  m_Range: 2
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -160,7 +161,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -172,12 +173,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 162456962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.423, y: 2.5, z: -1.7}
+  m_LocalPosition: {x: -1.39, y: 2.5, z: -1.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &162456965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 162456962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013705025568f6a4d8d4a30fe3721e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &370706765
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +459,11 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fb0fe3ae8df212a47957a8d22dd00266, type: 2}
+      objectReference: {fileID: 2100000, guid: 5adb3c65b648cc44a96d7857a88f6165, type: 2}
+    - target: {fileID: 1409526596579530, guid: 51c1552b08631ab4e897b7201bd8a97e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51c1552b08631ab4e897b7201bd8a97e, type: 2}
   m_IsPrefabParent: 0
@@ -460,8 +476,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1696286518}
   - component: {fileID: 1696286517}
+  - component: {fileID: 1696286519}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: SpotLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,9 +493,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 0, g: 0.09298921, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 5000
+  m_Color: {r: 0, g: 0.050011635, b: 1, a: 1}
+  m_Intensity: 78.48
+  m_Range: 50
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -510,12 +527,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1696286516}
   m_LocalRotation: {x: 0.008726558, y: 0, z: 0, w: 0.999962}
-  m_LocalPosition: {x: -1.445, y: 2.5, z: -3}
+  m_LocalPosition: {x: -1.39, y: 2.68, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 1, y: 0, z: 0}
+--- !u!114 &1696286519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1696286516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013705025568f6a4d8d4a30fe3721e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1894741340
 GameObject:
   m_ObjectHideFlags: 0
