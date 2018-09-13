@@ -40,7 +40,7 @@ public class Reel : MonoBehaviour {
     private int reelLeftSuberiKoma = 0;
     private int reelRightSuberiKoma = 0;
 
-	private float reelSpeed = 5.0f;
+	private float reelSpeed = 7.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -216,16 +216,16 @@ public class Reel : MonoBehaviour {
 
     private int ReelCenterSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
     {
-        return 2;
+        return 4;
     }
 
     private int ReelLeftSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
     {
-        return 2;
+        return 4;
     }
 
     private int ReelRightSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
     {
-        return 2;
+        return 4;
     }
 }

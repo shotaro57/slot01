@@ -90,7 +90,7 @@ public class Button : MonoBehaviour {
 		}
 		else
 		{
-
+			reelCount = 0;
 		}		
 		
 	}
@@ -103,6 +103,6 @@ public class Button : MonoBehaviour {
 		tmpButtonCenterColor = Color.blue;
 		tmpButtonLeftColor = Color.blue;
 		tmpButtonRightColor = Color.blue;
-        reelCount = 0;
+        //reelCount = 0;
 	}
 }
