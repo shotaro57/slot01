@@ -1,0 +1,417 @@
+int reelCenterBitaZugara
+int reelRightBitaZugara
+int reelLeftBitaZugara
+
+public int suberi;
+
+private int ReelLefSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
+{
+	if(teishi == 1){
+		if(Main.Role == "リプレイ"){
+			if(LeftBitaZugara == 3||LeftBitaZugara == 4||LeftBitaZugara == 8||LeftBitaZugara == 12||LeftBitaZugara == 13||LeftBitaZugara == 14|| LeftBitaZugara == 16||LeftBitaZugara == 19||LeftBitaZugara == 20){
+				return 0;
+			}else if(LeftBitaZugara == 1||LeftBitaZugara == 2||LeftBitaZugara == 6||LeftBitaZugara == 7||LeftBitaZugara == 11||LeftBitaZugara == 15||LeftBitaZugara == 17||LeftBitaZugara == 18){
+				return 1;
+			}else if(LeftBitaZugara == 5||LeftBitaZugara == 10||LeftBitaZugara == 21){
+				return 2;
+			}else if(LeftBitaZugara == 9){
+				return 3;
+			}
+		}else if(Main.Role == "ブドウ"){
+			if(LeftBitaZugara == 3||LeftBitaZugara == 6||LeftBitaZugara == 8||LeftBitaZugara == 12||LeftBitaZugara == 14||LeftBitaZugara == 15|| LeftBitaZugara == 17||LeftBitaZugara == 19||LeftBitaZugara == 20){
+				return 0;
+			}else if(LeftBitaZugara == 2||LeftBitaZugara == 5||LeftBitaZugara == 7||LeftBitaZugara == 11|| LeftBitaZugara == 13||LeftBitaZugara == 16||LeftBitaZugara == 18){
+				return 1;
+			}else if(LeftBitaZugara == 1||LeftBitaZugara == 4||LeftBitaZugara == 10){
+				return 2;
+			}else if(LeftBitaZugara == 9||LeftBitaZugara == 21){
+				return 3;
+			}
+		}else if(Main.Role == "チェリー"){
+			if(LeftBitaZugara == 2||LeftBitaZugara == 9||LeftBitaZugara == 11||LeftBitaZugara == 21){
+				return 0;
+			}else if(LeftBitaZugara == 8||LeftBitaZugara == 20){
+				return 1;
+			}else if(LeftBitaZugara == 7||LeftBitaZugara == 19){
+				return 2;
+			}else if(LeftBitaZugara == 6||LeftBitaZugara == 18){
+				return 3;
+			}else if(LeftBitaZugara == 5||LeftBitaZugara == 17){
+				return 4;
+			}else{
+				return Random.Range(0,3);
+			}
+		}else if(Main.Role == "ピエロ"){
+			if(LeftBitaZugara == 4||LeftBitaZugara == 6){
+				return 0;
+			}else if(LeftBitaZugara == 3||LeftBitaZugara == 5){
+				return 1;
+			}else if(LeftBitaZugara == 2){
+				return 2;
+			}else if(LeftBitaZugara == 1){
+				return 3;
+			}else if(LeftBitaZugara == 21){
+				return 4;
+			}else{
+				return Random.Range(0,3);
+			}
+		}else if(Main.Role == "ベル"){
+			if(LeftBitaZugara == 16||LeftBitaZugara == 18){
+				return 0;
+			}else if(LeftBitaZugara == 15||LeftBitaZugara == 17){
+				return 1;
+			}else if(LeftBitaZugara == 14){
+				return 2;
+			}else if(LeftBitaZugara == 13){
+				return 3;
+			}else if(LeftBitaZugara == 12){
+				return 4;
+			}else{
+				return Random.Range(0,3);
+			}
+		}else if(Main.Role == "単b"){
+			if(LeftBitaZugara == 6||LeftBitaZugara == 7||LeftBitaZugara == 12||LeftBitaZugara == 15||LeftBitaZugara == 16||LeftBitaZugara == 17||LeftBitaZugara == 20){
+				return 0;
+			}else if(LeftBitaZugara == 4||LeftBitaZugara == 14||LeftBitaZugara == 19){
+				return 1;
+			}else if(LeftBitaZugara == 3||LeftBitaZugara == 10||LeftBitaZugara == 13||LeftBitaZugara == 18){
+				return 2;
+			}else if(LeftBitaZugara == 2||LeftBitaZugara == 9||LeftBitaZugara == 12){
+				return 3;
+			}else if(LeftBitaZugara == 1||LeftBitaZugara == 8||LeftBitaZugara == 11||LeftBitaZugara == 21){
+				return 4;
+			}else{
+				return Random.Range(0,3);
+			}
+		
+		}else if(Main.Role == "重b"){
+			if(LeftBitaZugara == 6||LeftBitaZugara == 7||LeftBitaZugara == 9||LeftBitaZugara == 12||LeftBitaZugara == 15||LeftBitaZugara == 16||LeftBitaZugara == 17||LeftBitaZugara == 21){
+				return 0;
+			}else if(LeftBitaZugara == 4||LeftBitaZugara == 8||LeftBitaZugara == 10||LeftBitaZugara == 14||LeftBitaZugara == 20){
+				return 1;
+			}else if(LeftBitaZugara == 3||LeftBitaZugara == 13||LeftBitaZugara == 19){
+				return 2;
+			}else if(LeftBitaZugara == 2||LeftBitaZugara ==12||LeftBitaZugara == 18){
+				return 3;
+			}else if(LeftBitaZugara == 1||LeftBitaZugara == 11){
+				return 4;
+			}else{
+				return Random.Range(0,3);
+			}
+		}else if(Main.Role == "単r"){
+			if(LeftBitaZugara == 6||LeftBitaZugara == 7||LeftBitaZugara == 12||LeftBitaZugara == 15||LeftBitaZugara == 16||LeftBitaZugara == 17||LeftBitaZugara == 20){
+				return 0;
+			}else if(LeftBitaZugara == 4||LeftBitaZugara == 14||LeftBitaZugara == 19){
+				return 1;
+			}else if(LeftBitaZugara == 3||LeftBitaZugara == 10||LeftBitaZugara == 13||LeftBitaZugara == 18){
+				return 2;
+			}else if(LeftBitaZugara == 2||LeftBitaZugara == 9||LeftBitaZugara == 12){
+				return 3;
+			}else if(LeftBitaZugara == 1||LeftBitaZugara == 8||LeftBitaZugara == 11||LeftBitaZugara == 21){
+				return 4;
+			}else{
+				return Random.Range(0,3);
+			}
+		}else if(Main.Role == "重r"){
+			if(LeftBitaZugara == 6||LeftBitaZugara == 7||LeftBitaZugara == 9||LeftBitaZugara == 12||LeftBitaZugara == 15||LeftBitaZugara == 16||LeftBitaZugara == 17||LeftBitaZugara == 21){
+				return 0;
+			}else if(LeftBitaZugara == 4||LeftBitaZugara == 8||LeftBitaZugara == 10||LeftBitaZugara == 14||LeftBitaZugara == 20){
+				return 1;
+			}else if(LeftBitaZugara == 3||LeftBitaZugara == 13||LeftBitaZugara == 19){
+				return 2;
+			}else if(LeftBitaZugara == 2||LeftBitaZugara ==12||LeftBitaZugara == 18){
+				return 3;
+			}else if(LeftBitaZugara == 1||LeftBitaZugara == 11){
+				return 4;
+			}else{
+				return Random.Range(0,3);
+			}
+		}else{
+			if(LeftBitaZugara == 5||LeftBitaZugara == 7||LeftBitaZugara == 12||LeftBitaZugara == 20){
+				return 0;
+			}else if(LeftBitaZugara == 4||LeftBitaZugara == 6||LeftBitaZugara ==11||LeftBitaZugara == 19){
+				return 1;
+			}else if(LeftBitaZugara == 3||LeftBitaZugara == 10||LeftBitaZugara == 18){
+				return 2;
+			}else if(LeftBitaZugara == 2||LeftBitaZugara == 9||LeftBitaZugara == 17){
+				return 3;
+			}else if(LeftBitaZugara == 8||LeftBitaZugara == 16||LeftBitaZugara == 21){
+				return 4;
+			}else{
+				return Random.Range(0,3);
+			}
+		}
+	}else if(teishi == 2){
+		if(centertStopFlag == true && rightStopFlag == false){
+			if(Main.Role == "リプレイ"){
+		
+			}else if(Main.Role == "ブドウ"){
+		
+			}else if(Main.Role == "チェリー"){
+		
+			}else if(Main.Role == "ピエロ"){
+		
+			}else if(Main.Role == "ベル"){
+		
+			}else if(Main.Role == "単b"){
+		
+			}else if(Main.Role == "重b"){
+		
+			}else if(Main.Role == "単r"){
+		
+			}else if(Main.Role == "重r"){
+		
+			}else{
+		
+			}
+		}else if(centerStopFlag == false && rightStopFlag == true){
+			if(Main.Role == "リプレイ"){
+		
+			}else if(Main.Role == "ブドウ"){
+		
+			}else if(Main.Role == "チェリー"){
+		
+			}else if(Main.Role == "ピエロ"){
+		
+			}else if(Main.Role == "ベル"){
+		
+			}else if(Main.Role == "単b"){
+		
+			}else if(Main.Role == "重b"){
+		
+			}else if(Main.Role == "単r"){
+		
+			}else if(Main.Role == "重r"){
+		
+			}else{
+		
+			}
+		}
+
+	}else if(teishi == 3){
+		if(Main.Role == "リプレイ"){
+		
+		}else if(Main.Role == "ブドウ"){
+		
+		}else if(Main.Role == "チェリー"){
+		
+		}else if(Main.Role == "ピエロ"){
+		
+		}else if(Main.Role == "ベル"){
+		
+		}else if(Main.Role == "単b"){
+		
+		}else if(Main.Role == "重b"){
+		
+		}else if(Main.Role == "単r"){
+		
+		}else if(Main.Role == "重r"){
+		
+		}else{
+		
+		}
+	}
+
+	}
+}
+
+private int ReelCenterSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
+{
+	if(teishi == 1){
+		if(Main.Role == "リプレイ"){
+		
+		}else if(Main.Role == "ブドウ"){
+		
+		}else if(Main.Role == "チェリー"){
+		
+		}else if(Main.Role == "ピエロ"){
+		
+		}else if(Main.Role == "ベル"){
+		
+		}else if(Main.Role == "単b"){
+		
+		}else if(Main.Role == "重b"){
+		
+		}else if(Main.Role == "単r"){
+		
+		}else if(Main.Role == "重r"){
+		
+		}else{
+		
+		}
+
+
+	}else if(teishi == 2){
+		if(leftStopFlag == true && rightStopFlag == false){
+			if(Main.Role == "リプレイ"){
+		
+			}else if(Main.Role == "ブドウ"){
+		
+			}else if(Main.Role == "チェリー"){
+		
+			}else if(Main.Role == "ピエロ"){
+		
+			}else if(Main.Role == "ベル"){
+		
+			}else if(Main.Role == "単b"){
+		
+			}else if(Main.Role == "重b"){
+		
+			}else if(Main.Role == "単r"){
+		
+			}else if(Main.Role == "重r"){
+		
+			}else{
+		
+			}
+		}else if(leftStopFlag == false && rightStopFlag == true){
+			if(Main.Role == "リプレイ"){
+		
+			}else if(Main.Role == "ブドウ"){
+		
+			}else if(Main.Role == "チェリー"){
+		
+			}else if(Main.Role == "ピエロ"){
+		
+			}else if(Main.Role == "ベル"){
+		
+			}else if(Main.Role == "単b"){
+		
+			}else if(Main.Role == "重b"){
+		
+			}else if(Main.Role == "単r"){
+		
+			}else if(Main.Role == "重r"){
+		
+			}else{
+		
+			}
+		}
+
+	}else if(teishi == 3){
+		if(Main.Role == "リプレイ"){
+		
+		}else if(Main.Role == "ブドウ"){
+		
+		}else if(Main.Role == "チェリー"){
+		
+		}else if(Main.Role == "ピエロ"){
+		
+		}else if(Main.Role == "ベル"){
+		
+		}else if(Main.Role == "単b"){
+		
+		}else if(Main.Role == "重b"){
+		
+		}else if(Main.Role == "単r"){
+		
+		}else if(Main.Role == "重r"){
+		
+		}else{
+		
+		}
+	}
+
+	}
+
+}
+
+private int ReelRightSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
+{
+	if(teishi == 1){
+		if(Main.Role == "リプレイ"){
+		
+		}else if(Main.Role == "ブドウ"){
+		
+		}else if(Main.Role == "チェリー"){
+		
+		}else if(Main.Role == "ピエロ"){
+		
+		}else if(Main.Role == "ベル"){
+		
+		}else if(Main.Role == "単b"){
+		
+		}else if(Main.Role == "重b"){
+		
+		}else if(Main.Role == "単r"){
+		
+		}else if(Main.Role == "重r"){
+		
+		}else{
+		
+		}
+
+
+	}else if(teishi == 2){
+		if(leftStopFlag == true && centerStopFlag == false){
+			if(Main.Role == "リプレイ"){
+		
+			}else if(Main.Role == "ブドウ"){
+		
+			}else if(Main.Role == "チェリー"){
+		
+			}else if(Main.Role == "ピエロ"){
+		
+			}else if(Main.Role == "ベル"){
+		
+			}else if(Main.Role == "単b"){
+		
+			}else if(Main.Role == "重b"){
+		
+			}else if(Main.Role == "単r"){
+		
+			}else if(Main.Role == "重r"){
+		
+			}else{
+		
+			}
+		}else if(leftStopFlag == false && centerStopFlag == true){
+			if(Main.Role == "リプレイ"){
+		
+			}else if(Main.Role == "ブドウ"){
+		
+			}else if(Main.Role == "チェリー"){
+		
+			}else if(Main.Role == "ピエロ"){
+		
+			}else if(Main.Role == "ベル"){
+		
+			}else if(Main.Role == "単b"){
+		
+			}else if(Main.Role == "重b"){
+		
+			}else if(Main.Role == "単r"){
+		
+			}else if(Main.Role == "重r"){
+		
+			}else{
+		
+			}
+		}
+
+	}else if(teishi == 3){
+		if(Main.Role == "リプレイ"){
+		
+		}else if(Main.Role == "ブドウ"){
+		
+		}else if(Main.Role == "チェリー"){
+		
+		}else if(Main.Role == "ピエロ"){
+		
+		}else if(Main.Role == "ベル"){
+		
+		}else if(Main.Role == "単b"){
+		
+		}else if(Main.Role == "重b"){
+		
+		}else if(Main.Role == "単r"){
+		
+		}else if(Main.Role == "重r"){
+		
+		}else{
+		
+		}
+	}
+
+	}
+}
