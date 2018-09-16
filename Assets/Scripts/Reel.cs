@@ -55,92 +55,21 @@ public class Reel : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Main.playFlag){
+            // リールの回転時間を計るためのタイマーをセット
             if(reelTimerFlag){
                 reelTimer = Time.time;
                 reelTimerFlag = false;
             }
 
-			if (Main.isReelCenterStop)
-            {
-                if(reelCenterBitaZugaraFlag){
-                    reelCenterBitaZugara = CalcReelBitaZugara(reelCenterBitaZugara, Time.time - reelTimer);
-                    reelCenterBitaZugaraFlag = false;
-                    reelCenterStopFlag = true;
-                    Debug.Log("center:" + reelCenterBitaZugara);
-                }
-                if(reelCenterWaitTimeFlag){
-                    reelCenterSuberiKoma = ReelCenterSuberi(reelCount + 1, reelCenterStopFlag, reelLeftStopFlag, reelRightStopFlag);
-                    reelCenterWaitTime = CalcReelWaitTime(reelCenterSuberiKoma, Time.time - reelTimer);
-                    reelCenterBitaZugara += reelCenterSuberiKoma;
-                    reelCenterWaitTimeFlag = false;
-                }
-                
-                reelCenterRotateTime += Time.deltaTime;
-                if(reelCenterRotateTime >= reelCenterWaitTime){
-                    reelCenter.transform.rotation = Quaternion.Euler(-(float)(reelCenterBitaZugara + 1) * (360.0f / 21.0f) - 90.0f, 0, -180);
-                    reelCenterSpeed = 0;
-				    Main.isReelCenterStop = false;
-                    reelCenterRotateTime = 0;
-                    reelCenterBitaZugaraFlag = true;
-                    reelCenterWaitTimeFlag = true;
-                    reelCount++;
-                }
-            }
-            if (Main.isReelLeftStop)
-            {
-                if(reelLeftBitaZugaraFlag){
-                    reelLeftBitaZugara = CalcReelBitaZugara(reelLeftBitaZugara, Time.time - reelTimer);
-                    reelLeftBitaZugaraFlag = false;
-                    reelLeftStopFlag = true;
-                    Debug.Log("left:" + reelLeftBitaZugara);
-                }
-                if(reelLeftWaitTimeFlag){
-                    reelLeftSuberiKoma = ReelLeftSuberi(reelCount + 1, reelCenterStopFlag, reelLeftStopFlag, reelRightStopFlag);
-                    reelLeftWaitTime = CalcReelWaitTime(reelLeftSuberiKoma, Time.time - reelTimer);
-                    reelLeftBitaZugara += reelLeftSuberiKoma;
-                    reelLeftWaitTimeFlag = false;
-                }
-                
-                reelLeftRotateTime += Time.deltaTime;
-                if(reelLeftRotateTime >= reelLeftWaitTime){
-                    reelLeft.transform.rotation = Quaternion.Euler(-(float)(reelLeftBitaZugara + 1) * (360.0f / 21.0f) - 90.0f, 0, -180);
-                    reelLeftSpeed = 0;
-				    Main.isReelLeftStop = false;
-                    reelLeftRotateTime = 0;
-                    reelLeftBitaZugaraFlag = true;
-                    reelLeftWaitTimeFlag = true;
-                    reelCount++;
-                }
-            }
-            if (Main.isReelRightStop)
-            {
-                if(reelRightBitaZugaraFlag){
-                    reelRightBitaZugara = CalcReelBitaZugara(reelRightBitaZugara, Time.time - reelTimer);
-                    reelRightBitaZugaraFlag = false;
-                    reelRightStopFlag = true;
-                    Debug.Log("right:" + reelRightBitaZugara);
-                }
-                if(reelRightWaitTimeFlag){
-                    reelRightSuberiKoma = ReelRightSuberi(reelCount + 1, reelCenterStopFlag, reelLeftStopFlag, reelRightStopFlag);
-                    reelRightWaitTime = CalcReelWaitTime(reelRightSuberiKoma, Time.time - reelTimer);
-                    reelRightBitaZugara += reelRightSuberiKoma;
-                    reelRightWaitTimeFlag = false;
-                }
-                
-                reelRightRotateTime += Time.deltaTime;
-                if(reelRightRotateTime >= reelRightWaitTime){
-                    reelRight.transform.rotation = Quaternion.Euler(-(float)(reelRightBitaZugara + 1) * (360.0f / 21.0f) - 90.0f, 0, -180);
-                    reelRightSpeed = 0;
-				    Main.isReelRightStop = false;
-                    reelRightRotateTime = 0;
-                    reelRightBitaZugaraFlag = true;
-                    reelRightWaitTimeFlag = true;
-                    reelCount++;
-                }
-            }
+            // 各ボタンが押されたらスベリを計算しリールを止める
+			if (Main.isReelCenterStop)  ReelCenterStop();
+            if (Main.isReelLeftStop)    ReelLeftStop();
+            if (Main.isReelRightStop)   ReelRightStop();
 
+            // リール回転
             ReelRotate();
 
+            // リールが三つ停止した場合、遊戯フラグをfalseにして初期化
             if (reelCount == 3)
             {
                 Main.playFlag = false;
@@ -214,18 +143,107 @@ public class Reel : MonoBehaviour {
         return reelRotateAngle;
     }
 
+    private void ReelCenterStop()
+    {
+        if(reelCenterBitaZugaraFlag){
+            reelCenterBitaZugara = CalcReelBitaZugara(reelCenterBitaZugara, Time.time - reelTimer);
+            reelCenterBitaZugaraFlag = false;
+            reelCenterStopFlag = true;
+            Debug.Log("center:" + reelCenterBitaZugara);
+        }
+        if(reelCenterWaitTimeFlag){
+            reelCenterSuberiKoma = ReelCenterSuberi(reelCount + 1, reelCenterStopFlag, reelLeftStopFlag, reelRightStopFlag);
+            reelCenterWaitTime = CalcReelWaitTime(reelCenterSuberiKoma, Time.time - reelTimer);
+            reelCenterBitaZugara += reelCenterSuberiKoma;
+            reelCenterWaitTimeFlag = false;
+        }
+                
+        reelCenterRotateTime += Time.deltaTime;
+        if(reelCenterRotateTime >= reelCenterWaitTime){
+            reelCenter.transform.rotation = Quaternion.Euler(-(float)(reelCenterBitaZugara + 1) * (360.0f / 21.0f) - 90.0f, 0, -180);
+            reelCenterSpeed = 0;
+    	    Main.isReelCenterStop = false;
+            reelCenterRotateTime = 0;
+            reelCenterBitaZugaraFlag = true;
+            reelCenterWaitTimeFlag = true;
+            reelCount++;
+        }
+    }
+
+    private void ReelLeftStop()
+    {
+        if(reelLeftBitaZugaraFlag){
+            reelLeftBitaZugara = CalcReelBitaZugara(reelLeftBitaZugara, Time.time - reelTimer);
+            reelLeftBitaZugaraFlag = false;
+            reelLeftStopFlag = true;
+            Debug.Log("left:" + reelLeftBitaZugara);
+        }
+        if(reelLeftWaitTimeFlag){
+            reelLeftSuberiKoma = ReelLeftSuberi(reelCount + 1, reelCenterStopFlag, reelLeftStopFlag, reelRightStopFlag);
+            reelLeftWaitTime = CalcReelWaitTime(reelLeftSuberiKoma, Time.time - reelTimer);
+            reelLeftBitaZugara += reelLeftSuberiKoma;
+            reelLeftWaitTimeFlag = false;
+        }
+              
+        reelLeftRotateTime += Time.deltaTime;
+        if(reelLeftRotateTime >= reelLeftWaitTime){
+            reelLeft.transform.rotation = Quaternion.Euler(-(float)(reelLeftBitaZugara + 1) * (360.0f / 21.0f) - 90.0f, 0, -180);
+            reelLeftSpeed = 0;
+		    Main.isReelLeftStop = false;
+            reelLeftRotateTime = 0;
+            reelLeftBitaZugaraFlag = true;
+            reelLeftWaitTimeFlag = true;
+            reelCount++;
+        }
+    }
+
+    private void ReelRightStop()
+    {
+        if(reelRightBitaZugaraFlag){
+            reelRightBitaZugara = CalcReelBitaZugara(reelRightBitaZugara, Time.time - reelTimer);
+            reelRightBitaZugaraFlag = false;
+            reelRightStopFlag = true;
+            Debug.Log("right:" + reelRightBitaZugara);
+        }
+        if(reelRightWaitTimeFlag){
+            reelRightSuberiKoma = ReelRightSuberi(reelCount + 1, reelCenterStopFlag, reelLeftStopFlag, reelRightStopFlag);
+            reelRightWaitTime = CalcReelWaitTime(reelRightSuberiKoma, Time.time - reelTimer);
+            reelRightBitaZugara += reelRightSuberiKoma;
+            reelRightWaitTimeFlag = false;
+        }
+               
+        reelRightRotateTime += Time.deltaTime;
+        if(reelRightRotateTime >= reelRightWaitTime){
+            reelRight.transform.rotation = Quaternion.Euler(-(float)(reelRightBitaZugara + 1) * (360.0f / 21.0f) - 90.0f, 0, -180);
+            reelRightSpeed = 0;
+		    Main.isReelRightStop = false;
+            reelRightRotateTime = 0;
+            reelRightBitaZugaraFlag = true;
+            reelRightWaitTimeFlag = true;
+            reelCount++;
+        }
+    }
+
+
+
+
+
+
+
+
+
     private int ReelCenterSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
     {
-        return 4;
+        return 0;
     }
 
     private int ReelLeftSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
     {
-        return 4;
+        return 0;
     }
 
     private int ReelRightSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
     {
-        return 4;
+        return 0;
     }
 }

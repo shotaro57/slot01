@@ -33,60 +33,31 @@ public class Button : MonoBehaviour {
 		if (Main.playFlag){
 			if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
 			{
-				buttonCenter.GetComponent<Renderer>().material.color = Color.red;
-				buttonLeft.GetComponent<Renderer>().material.color = Color.red;
-				buttonRight.GetComponent<Renderer>().material.color = Color.red;
+				ButtonColorRed();	// ボタンの色を赤に変更
 			}
 			else if(Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.UpArrow))
 			{
-				buttonCenter.GetComponent<Renderer>().material.color = tmpButtonCenterColor;
-				buttonLeft.GetComponent<Renderer>().material.color = tmpButtonLeftColor;
-				buttonRight.GetComponent<Renderer>().material.color = tmpButtonRightColor;
+				ButtonColorTmp();	// ボタンの色をtmpより反映
 			}
 			else
 			{
+				// ボタンの色をtmpに格納
 				tmpButtonCenterColor = buttonCenter.GetComponent<Renderer>().material.color;
 				tmpButtonLeftColor = buttonLeft.GetComponent<Renderer>().material.color;
 				tmpButtonRightColor = buttonRight.GetComponent<Renderer>().material.color;
 
-				if(!isButtonCenterStop)
-				{
-					if (Input.GetKeyDown(KeyCode.DownArrow))
-            		{
-                		buttonCenter.GetComponent<Renderer>().material.color = Color.red;
-						Main.isReelCenterStop = true;
-						isButtonCenterStop = true;
-                		reelCount++;
-            		}
-				}
-				if(!isButtonLeftStop)
-				{
-					if (Input.GetKeyDown(KeyCode.LeftArrow))
-            		{
-                		buttonLeft.GetComponent<Renderer>().material.color = Color.red;
-						Main.isReelLeftStop = true;
-						isButtonLeftStop = true;
-                		reelCount++;
-            		}
-				}
-				if(!isButtonRightStop)
-				{
-					if (Input.GetKeyDown(KeyCode.RightArrow))
-            		{
-                		buttonRight.GetComponent<Renderer>().material.color = Color.red;
-						Main.isReelRightStop = true;
-						isButtonRightStop = true;
-                		reelCount++;
-            		}
-				}
+				// ボタンが押されたときの処理
+				if(!isButtonCenterStop)	ButtonCenterStop();
+				if(!isButtonLeftStop)	ButtonLeftStop();
+				if(!isButtonRightStop)	ButtonRightStop();
 
+				// ボタンが三つ押された場合、初期化
 				if (reelCount == 3)
             	{
 					//Main.playFlag = false;
                 	initButton();
             	}		
 			}
-
 		}
 		else
 		{
@@ -104,5 +75,52 @@ public class Button : MonoBehaviour {
 		tmpButtonLeftColor = Color.blue;
 		tmpButtonRightColor = Color.blue;
         //reelCount = 0;
+	}
+
+	private void ButtonColorRed()
+	{
+		buttonCenter.GetComponent<Renderer>().material.color = Color.red;
+		buttonLeft.GetComponent<Renderer>().material.color = Color.red;
+		buttonRight.GetComponent<Renderer>().material.color = Color.red;
+	}
+
+	private void ButtonColorTmp()
+	{
+		buttonCenter.GetComponent<Renderer>().material.color = tmpButtonCenterColor;
+		buttonLeft.GetComponent<Renderer>().material.color = tmpButtonLeftColor;
+		buttonRight.GetComponent<Renderer>().material.color = tmpButtonRightColor;
+	}
+
+	private void ButtonCenterStop()
+	{
+		if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+        	buttonCenter.GetComponent<Renderer>().material.color = Color.red;
+			Main.isReelCenterStop = true;
+			isButtonCenterStop = true;
+        	reelCount++;
+        }
+	}
+
+	private void ButtonLeftStop()
+	{
+		if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+        	buttonLeft.GetComponent<Renderer>().material.color = Color.red;
+			Main.isReelLeftStop = true;
+			isButtonLeftStop = true;
+        	reelCount++;
+        }
+	}
+
+	private void ButtonRightStop()
+	{
+		if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+       		buttonRight.GetComponent<Renderer>().material.color = Color.red;
+			Main.isReelRightStop = true;
+			isButtonRightStop = true;
+       		reelCount++;
+ 		}
 	}
 }

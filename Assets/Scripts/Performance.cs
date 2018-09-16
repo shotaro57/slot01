@@ -3,60 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Performance : MonoBehaviour {
+	
 	private int peka;
-	private int pekakanri = 0;
+	private bool pekaFlag = true;
     private Light pointComp;
     private Light spotComp;       
 	private GameObject pointLight;
 	private GameObject spotLight;
+
     // Use this for initialization
     void Start () {
  		pointLight = GameObject.Find("PointLight");
 		spotLight = GameObject.Find("SpotLight");
 		pointComp = pointLight.GetComponent<Light>();
 		spotComp = spotLight.GetComponent<Light>();
-		pointComp.intensity = 0f;
-		spotComp.intensity = 0f;
-
+		LightOff();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		/*
-		if (Input.GetKeyDown(KeyCode.Tab))
-		{
-			Main.jyunbiFlag = false;
-		}
-		*/
-
 		if(Main.jyunbiFlag){
-			if(!Main.Lump){
-				if(pekakanri == 0){
+			if(!Main.lump){
+				// 先ペカ、後ペカの判定
+				if(pekaFlag){
 					peka = Random.Range(0,4);
-					pekakanri = 1;
+					pekaFlag = false;
 				}
+
+				// ランプ点灯処理
 				if(peka == 0){
-					Main.Lump = true;
-					Debug.Log("先点灯中");
-					pointComp.intensity = 2.36f;
-					spotComp.intensity = 78.48f;
-					pekakanri = 0;
+					Main.lump = true;
+					pekaFlag = true;
+					LightOn();
 				}else{
-                    if(Main.playFlag == false){
-						Main.Lump = true;
-						Debug.Log("後点灯中");
-						pointComp.intensity = 2.36f;
-						spotComp.intensity = 78.48f;
-                        pekakanri = 0;
+                    if(!Main.playFlag){
+						Main.lump = true;
+                        pekaFlag = true;
+						LightOn();
 					}				
 				}
 			}
-
 		}else{
-			pointComp.intensity = 0f;
-			spotComp.intensity = 0f;
-			Main.Lump = false;
+			// ランプを消す処理
+			if(Main.lump)
+			{
+				LightOff();
+				Main.lump = false;
+			}
 		}
 		
+	}
+
+	private void LightOn()
+	{
+		pointComp.intensity = 2.36f;
+		spotComp.intensity = 78.48f;
+	}
+
+	private void LightOff()
+	{
+		pointComp.intensity = 0f;
+		spotComp.intensity = 0f;
 	}
 }
