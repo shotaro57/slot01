@@ -157,82 +157,9 @@ public class Reel : MonoBehaviour {
 		}
 	}
 
-	private void ReelRotate()
-    {
-        reelCenter.transform.Rotate(new Vector3(reelCenterSpeed, 0, 0));
-        reelLeft.transform.Rotate(new Vector3(reelLeftSpeed, 0, 0));
-        reelRight.transform.Rotate(new Vector3(reelRightSpeed, 0, 0));
-    }
-
-	private void initReel()
-	{
-		reelCenterSpeed = reelSpeed;
-        reelLeftSpeed = reelSpeed;
-        reelRightSpeed = reelSpeed;
-		reelCount = 0;
-        reelTeishi = 1;
-        reelTimerFlag = true;
-        reelCenterStopFlag = false;
-        reelLeftStopFlag = false;
-        reelRightStopFlag = false;
-	}
-
-    private int CalcReelBitaZugara(int beforeZugara, float reelRotateTime)
-    {
-        int afterZugara;
-        int suberi;
-        float reelRotateAngle;
-
-        reelRotateAngle = CalcReelRotateAngle(reelRotateTime);
-        suberi = 1 + (int)(reelRotateAngle / (360.0f / 21.0f));
-        afterZugara = beforeZugara + suberi;
-        afterZugara = ChangeZugaraRange(afterZugara);
-
-        return afterZugara;
-    }
-
-    private int ChangeZugaraRange(int value)
-    {
-        while(value > 21){
-            value -= 21;
-        }
-
-        while(value <= 0){
-            value += 21;
-        }
-
-        return value;
-    }
-
-    private float CalcReelWaitTime(int suberikoma, float reelRotateTime)
-    {
-        float reelRotateAngle;
-        float suberiAngle;
-        float suberiTime;
-
-        reelRotateAngle = CalcReelRotateAngle(reelRotateTime);
-        suberiAngle = 360.0f / 21.0f;
-        while(reelRotateAngle > suberiAngle){
-            suberiAngle += 360.0f / 21.0f;
-        }
-        suberiAngle = suberiAngle - reelRotateAngle;
-        suberiTime = suberiAngle / (60.0f * reelSpeed);
-
-        return (360.0f / 21.0f) / (60.0f * reelSpeed) * suberikoma + suberiTime;
-    }
-
-    private float CalcReelRotateAngle(float reelRotateTime)
-    {
-        float reelRotateAngle;
-
-        reelRotateAngle = 60.0f * reelSpeed * reelRotateTime;
-        while(reelRotateAngle >= 360.0f){
-            reelRotateAngle -= 360.0f;
-        }
-
-        return reelRotateAngle;
-    }
-
+    /*
+        中リールを止める処理メソッド。
+    */
     private void ReelCenterStop()
     {
         if(reelCenterBitaZugaraFlag){
@@ -261,6 +188,9 @@ public class Reel : MonoBehaviour {
         }
     }
 
+    /*
+        左リールを止める処理メソッド。
+    */
     private void ReelLeftStop()
     {
         if(reelLeftBitaZugaraFlag){
@@ -289,6 +219,9 @@ public class Reel : MonoBehaviour {
         }
     }
 
+    /*
+        右リールを止める処理メソッド。
+    */
     private void ReelRightStop()
     {
         if(reelRightBitaZugaraFlag){
@@ -317,24 +250,120 @@ public class Reel : MonoBehaviour {
         }
     }
 
+    /*
+        リールを回転するメソッド。
+    */
+	private void ReelRotate()
+    {
+        reelCenter.transform.Rotate(new Vector3(reelCenterSpeed, 0, 0));
+        reelLeft.transform.Rotate(new Vector3(reelLeftSpeed, 0, 0));
+        reelRight.transform.Rotate(new Vector3(reelRightSpeed, 0, 0));
+    }
 
+    /*
+        次遊技を行うための初期化メソッド。
+    */
+	private void initReel()
+	{
+		reelCenterSpeed = reelSpeed;
+        reelLeftSpeed = reelSpeed;
+        reelRightSpeed = reelSpeed;
+		reelCount = 0;
+        reelTeishi = 1;
+        reelTimerFlag = true;
+        reelCenterStopFlag = false;
+        reelLeftStopFlag = false;
+        reelRightStopFlag = false;
+	}
 
+    /*
+        リールのビタ押しされた図柄の番号を計算するメソッド。
+        回転した時間から回転角を計算し、算出する。
+    */
+    private int CalcReelBitaZugara(int beforeZugara, float reelRotateTime)
+    {
+        int afterZugara;
+        int suberi;
+        float reelRotateAngle;
 
+        reelRotateAngle = CalcReelRotateAngle(reelRotateTime);
+        suberi = 1 + (int)(reelRotateAngle / (360.0f / 21.0f));
+        afterZugara = beforeZugara + suberi;
+        afterZugara = ChangeZugaraRange(afterZugara);
 
+        return afterZugara;
+    }
 
+    /*
+        リール図柄の番号を1～21に変換するメソッド。
+    */
+    private int ChangeZugaraRange(int value)
+    {
+        while(value > 21){
+            value -= 21;
+        }
 
+        while(value <= 0){
+            value += 21;
+        }
 
+        return value;
+    }
 
+    /*
+        リールのすべりコマ数に対して、待ち時間を計算するメソッド。
+    */
+    private float CalcReelWaitTime(int suberikoma, float reelRotateTime)
+    {
+        float reelRotateAngle;
+        float suberiAngle;
+        float suberiTime;
+
+        reelRotateAngle = CalcReelRotateAngle(reelRotateTime);
+        suberiAngle = 360.0f / 21.0f;
+        while(reelRotateAngle > suberiAngle){
+            suberiAngle += 360.0f / 21.0f;
+        }
+        suberiAngle = suberiAngle - reelRotateAngle;
+        suberiTime = suberiAngle / (60.0f * reelSpeed);
+
+        return (360.0f / 21.0f) / (60.0f * reelSpeed) * suberikoma + suberiTime;
+    }
+
+    /*
+        リールの回転時間による回転角を計算するメソッド。
+    */
+    private float CalcReelRotateAngle(float reelRotateTime)
+    {
+        float reelRotateAngle;
+
+        reelRotateAngle = 60.0f * reelSpeed * reelRotateTime;
+        while(reelRotateAngle >= 360.0f){
+            reelRotateAngle -= 360.0f;
+        }
+
+        return reelRotateAngle;
+    }
+
+    /*
+        中リールのすべりコマ数を計算するメソッド。
+    */
     private int ReelCenterSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
     {
         return 0;
     }
 
+    /*
+        左リールのすべりコマ数を計算するメソッド。
+    */
     private int ReelLeftSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
     {
         return 0;
     }
 
+    /*
+        右リールのすべりコマ数を計算するメソッド。
+    */
     private int ReelRightSuberi(int teishi, bool centerStopFlag, bool leftStopFlag, bool rightStopFlag)
     {
         if(teishi == 1){
@@ -2090,98 +2119,110 @@ public class Reel : MonoBehaviour {
                 return suberiList[Random.Range(0, suberiList.Count)];
             }
         }
-
-        Debug.Log("debug");
-        return 2;
+        
+        return 0;
     }
 
-    private int SearchReelCenterArray(string rool, int searchFlag)
+    /*
+        中リールに対して、引数に指定された小役がどの位置にあるかを検索するメソッド。
+        下段：-1、中段：0、上段：1、枠上：2・・・
+    */
+    private int SearchReelCenterArray(string role, int searchFlag)
     {
         if(searchFlag <= 0)
         {
-            if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara - 1)] == rool){
+            if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara - 1)] == role){
                 return -1;
             }
         }
         if(searchFlag <= 1)
         {
-            if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara)] == rool){
+            if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara)] == role){
                 return 0;
             }
         }
 
-        if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara + 1)] == rool){
+        if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara + 1)] == role){
             return 1;
-        }else if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara + 2)] == rool){
+        }else if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara + 2)] == role){
             return 2;
-        }else if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara + 3)] == rool){
+        }else if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara + 3)] == role){
             return 3;
-        }else if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara + 4)] == rool){
+        }else if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara + 4)] == role){
             return 4;
-        }else if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara + 5)] == rool){
+        }else if(reelCenterArray[ChangeZugaraRange(reelCenterBitaZugara + 5)] == role){
             return 5;
         }
 
         return 6;
     }
 
-    private int SearchReelLeftArray(string rool, int searchFlag)
+    /*
+        左リールに対して、引数に指定された小役がどの位置にあるかを検索するメソッド。
+        下段：-1、中段：0、上段：1、枠上：2・・・
+    */
+    private int SearchReelLeftArray(string role, int searchFlag)
     {
         if(searchFlag <= 0)
         {
-            if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara - 1)] == rool){
+            if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara - 1)] == role){
                 return -1;
             }
         }
         if(searchFlag <= 1)
         {
-            if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara)] == rool){
+            if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara)] == role){
                 return 0;
             }
         }
 
-        if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara + 1)] == rool){
+        if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara + 1)] == role){
             return 1;
-        }else if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara + 2)] == rool){
+        }else if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara + 2)] == role){
             return 2;
-        }else if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara + 3)] == rool){
+        }else if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara + 3)] == role){
             return 3;
-        }else if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara + 4)] == rool){
+        }else if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara + 4)] == role){
             return 4;
-        }else if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara + 5)] == rool){
+        }else if(reelLeftArray[ChangeZugaraRange(reelLeftBitaZugara + 5)] == role){
             return 5;
         }
 
         return 6;
     }
 
-    private int SearchReelRightArray(string rool, int searchFlag)
+    /*
+        右リールに対して、引数に指定された小役がどの位置にあるかを検索するメソッド。
+        下段：-1、中段：0、上段：1、枠上：2・・・
+    */
+    private int SearchReelRightArray(string role, int searchFlag)
     {
         if(searchFlag <= 0)
         {
-            if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara - 1)] == rool){
+            if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara - 1)] == role){
                 return -1;
             }
         }
         if(searchFlag <= 1)
         {
-            if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara)] == rool){
+            if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara)] == role){
                 return 0;
             }
         }
 
-        if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara + 1)] == rool){
+        if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara + 1)] == role){
             return 1;
-        }else if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara + 2)] == rool){
+        }else if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara + 2)] == role){
             return 2;
-        }else if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara + 3)] == rool){
+        }else if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara + 3)] == role){
             return 3;
-        }else if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara + 4)] == rool){
+        }else if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara + 4)] == role){
             return 4;
-        }else if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara + 5)] == rool){
+        }else if(reelRightArray[ChangeZugaraRange(reelRightBitaZugara + 5)] == role){
             return 5;
         }
 
         return 6;
     }
+
 }
